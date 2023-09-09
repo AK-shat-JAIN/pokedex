@@ -1,13 +1,13 @@
 #search-box{
     width: 500px;
     padding: 10px 30px;
-    margin: 50px;
-    text-align: center;
+    margin: 20px;
+    text-align: center; 
     font-size: 18px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-radius: 50px;
     border: 1px solid #000;
-    background-color: rgb(255, 255, 162);
+    background-color: var(--primary);
 }
 
 #search-box:focus{
