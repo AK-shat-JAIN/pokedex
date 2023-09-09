@@ -1,0 +1,11 @@
+.title{
+    font-size: 36px;
+    letter-spacing: 3px;
+}
+
+.pokedex-cover{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

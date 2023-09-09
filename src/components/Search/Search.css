@@ -1,0 +1,16 @@
+#search-box{
+    width: 500px;
+    padding: 10px 30px;
+    margin: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background-color: rgb(255, 255, 162);
+}
+
+#search-box:focus{
+    outline: none;
+    filter: drop-shadow(0px 0px 5px #444800d6);
+}

@@ -1,0 +1,26 @@
+.pokelist-cover{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.control button{
+    padding: 10px 20px;
+    margin: 1rem;
+    border-radius: 2px;
+    border: 1px solid black;
+    font-size: 16px;
+    cursor: pointer;
+}
+.control button:hover{
+    background-color: wheat;
+    font-weight: bold;
+}
