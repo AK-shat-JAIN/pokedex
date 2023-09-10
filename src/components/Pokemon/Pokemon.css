@@ -12,6 +12,7 @@
     background-color: var(--primary);
     border-radius: 8px;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .pokemon-image{
@@ -24,6 +25,9 @@
     font-weight: bold;
     text-transform: capitalize;
 }
-.pokemon-name:hover{
-    text-decoration: underline;
+
+a{
+    text-decoration: none;
+    color: black;
+    text-align: center;
 }

@@ -38,11 +38,11 @@ function PokeList(){
             }
         })
         
-        console.log(response.data)
+        // console.log(response.data)
         // console.log(results)
         // console.log(PokemonResultPromise)
         console.log(PokemonData)
-        console.log(pokemonListResult);
+        // console.log(pokemonListResult);
         SetPokemonList(pokemonListResult);    
         SetLoading(false);
     }
@@ -57,7 +57,7 @@ function PokeList(){
                 <div className="pokemon-wrapper">
                     {(isLoading) ? 'Loading...' : 
                         pokemonList.map((pokemon)=>
-                            <Pokemon key={pokemon.id} name={pokemon.name} image={pokemon.image} />
+                            <Pokemon key={pokemon.id} name={pokemon.name} image={pokemon.image} id={pokemon.id} />
                         )
                     }
                 </div>

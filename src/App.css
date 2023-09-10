@@ -6,4 +6,19 @@
     padding: 0px;
     margin: 0px;
     font-family: cursive;
+    box-sizing: border-box;
+}
+
+.outer-pokedex{
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    margin: 15px;
+    text-align: center;
+    font-size: 42px;
+    font-family: cinzel, serif;
+    font-weight: 600;
+    letter-spacing: 3px;
 }
