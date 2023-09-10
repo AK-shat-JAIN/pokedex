@@ -9,14 +9,15 @@ import './PokemonDetail.css'
 function PokemonDetail(){
 
     const [pokemon, SetPokemon] = useState({})
+    const [isLoading, SetLoading] = useState(true);
 
     const { id } = useParams();
     const fetchUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
     
     async function downloadDetails(){
-        let response;
+        SetLoading(true);
         try {
-            response = await axios.get(fetchUrl);
+            const response = await axios.get(fetchUrl);
             SetPokemon({
                 name: response.data.name,
                 image: response.data.sprites.other.dream_world.front_default,
@@ -27,6 +28,8 @@ function PokemonDetail(){
             });
         } catch (error) {
             SetPokemon({});
+        }finally{
+            SetLoading(false);
         }
     }
 
@@ -37,11 +40,16 @@ function PokemonDetail(){
     return (
         <>  
             {
+                (isLoading) ? 
+                <div className="outer">
+                    Loading...
+                </div>   
+                    :
                 (pokemon.name==undefined) ? 
                 <div className="outer">
                     <div className="name">Pokemon Not Found</div>
                 </div>
-                     :
+                    :
                 <div className="outer">
                     <div className="top">
                         <div className="left">
