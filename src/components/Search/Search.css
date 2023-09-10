@@ -12,5 +12,18 @@
 
 #search-box:focus{
     outline: none;
-    filter: drop-shadow(0px 0px 5px #444800d6);
+    filter: drop-shadow(0px 0px 5px var(--primary));
+}
+
+.search{
+    padding: 10px 30px;
+    margin: 20px;
+    text-align: center; 
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid #000;
+}
+.search:hover{
+    background-color: var(--primary);
+    cursor: pointer;
 }
