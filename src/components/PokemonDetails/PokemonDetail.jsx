@@ -4,38 +4,13 @@ import { useParams } from "react-router-dom";
 
 //CSS import
 import './PokemonDetail.css'
+import usePokemonList from "../../../hooks/usePokemonList";
+import usePokemonDetail from "../../../hooks/usePokemonDetail";
 
 
 function PokemonDetail(){
-
-    const [pokemon, SetPokemon] = useState({})
-    const [isLoading, SetLoading] = useState(true);
-
-    const { id } = useParams();
-    const fetchUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    
-    async function downloadDetails(){
-        SetLoading(true);
-        try {
-            const response = await axios.get(fetchUrl);
-            SetPokemon({
-                name: response.data.name,
-                image: response.data.sprites.other.dream_world.front_default,
-                height: response.data.height,
-                weight: response.data.weight,
-                types: response.data.types.map((ele)=> ele.type.name),
-                moves: response.data.moves.map((ele)=> ele.move.name)
-            });
-        } catch (error) {
-            SetPokemon({});
-        }finally{
-            SetLoading(false);
-        }
-    }
-
-    useEffect(()=>{
-        downloadDetails();
-    },[]);
+    const {id} = useParams();
+    const [pokemon, isLoading, pokemonListState] = usePokemonDetail(id);
 
     return (
         <>  
@@ -60,7 +35,7 @@ function PokemonDetail(){
                                 <div>Types : 
                                     {pokemon.types && pokemon.types.map((ele)=>
                                         <li key={ele}>{ele}</li>
-                                        )}
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -72,6 +47,15 @@ function PokemonDetail(){
                     <div className="bottom">Moves : 
                         {pokemon.moves && pokemon.moves.join(', ')}
                     </div>
+
+                    {pokemon.types && pokemonListState.pokemonList && 
+                        <div>
+                            More {pokemon.types[0]} type pokemons :
+                            <ul>
+                                {pokemonListState.pokemonList.slice(0,5).map((p)=><li key={p.pokemon.url}>{p.pokemon.name}</li>)}
+                            </ul>
+                        </div>
+                    }
                 </div>
             }
         </>
