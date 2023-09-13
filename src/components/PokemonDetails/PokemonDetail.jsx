@@ -8,9 +8,9 @@ import usePokemonList from "../../../hooks/usePokemonList";
 import usePokemonDetail from "../../../hooks/usePokemonDetail";
 
 
-function PokemonDetail(){
+function PokemonDetail({ pokemonName }){
     const {id} = useParams();
-    const [pokemon, isLoading, pokemonListState] = usePokemonDetail(id);
+    const [pokemon, isLoading, pokemonListState] = usePokemonDetail(id, pokemonName);
 
     return (
         <>  

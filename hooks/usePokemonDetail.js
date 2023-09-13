@@ -2,17 +2,22 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import usePokemonList from "./usePokemonList";
 
-function usePokemonDetail(id){
+function usePokemonDetail(id, pokemonName){
     const [pokemon, SetPokemon] = useState({})
     const [isLoading, SetLoading] = useState(true);
-    const fetchUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
+
+    let fetchUrl;
+    if(pokemonName){
+        fetchUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+    }else{
+        fetchUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    }
     
     async function downloadDetails(){
         SetLoading(true);
         try {
             const response = await axios.get(fetchUrl);
             console.log("Locally response is from usePokemonDetail", response)
-            // const { pokemonListState } = usePokemonList(`https://pokeapi.co/api/v2/type/${response.data.types ? response.data.types[0].type.name : 'normal'}`, true);
 
             SetPokemon({
                 name: response.data.name,
@@ -25,6 +30,7 @@ function usePokemonDetail(id){
 
             SetPokemonListState({...pokemonListState,  POKEDEX_URL: `https://pokeapi.co/api/v2/type/${response.data.types ? response.data.types[0].type.name : 'normal'}`})
         } catch (error) {
+            console.log("Some Error")
             SetPokemon({});
         }finally{
             SetLoading(false);

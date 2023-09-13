@@ -2,22 +2,21 @@
 // CSS import
 import { Link } from 'react-router-dom';
 import './Search.css'
-import { useState } from 'react';
+import useDebounce from '../../../hooks/useDebounce';
 
-function Search(){
-    const [pokename, SetPokename] = useState("");
+function Search({ updateName }){
 
-    const nameEdit = event =>{
-        SetPokename(event.target.value);
-    }
-    
+    // const nameEdit = event =>{
+    //     SetPokename(event.target.value);
+    // }
+    const debouncedCallback = useDebounce((event) => updateName(event.target.value), 500)
 
     return (
         <div className="search-cover">
-            <input id="search-box" type="text" onChange={nameEdit} placeholder="Pokemon Name..."/>
-            <Link to={`/pokemon/${pokename.toLowerCase()}`} >
+            <input id="search-box" type="text" onChange={debouncedCallback} placeholder="Pokemon Name..."/>
+            {/* <Link to={`/pokemon/${pokename.toLowerCase()}`} >
                 <button className='search' type='button'>Search</button>
-            </Link>
+            </Link> */}
         </div>
     )
 }
